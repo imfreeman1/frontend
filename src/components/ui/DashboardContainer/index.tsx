@@ -6,13 +6,17 @@ import React, { Suspense } from "react";
 const DashboardContainer = () => {
   return (
     <div className="flex w-full min-h-screen m-auto bg-dashboardBackgroundColor">
-      <DashboardSideBar />
+      <Suspense fallback={<div>loading</div>}>
+        <DashboardSideBar />
+      </Suspense>
+
       <div className="grow flex-col h-full">
         <Suspense fallback={<div>loading</div>}>
           <DashboardHeader />
         </Suspense>
-
-        <DashboardBody />
+        <Suspense fallback={<div>loading</div>}>
+          <DashboardBody />
+        </Suspense>
       </div>
     </div>
   );
